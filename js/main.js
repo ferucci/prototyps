@@ -1,6 +1,6 @@
 'use strict';
 
-const inputs = document.querySelectorAll('input');
+let inputs = document.querySelectorAll('input');
 
 let inputText = document.getElementById('inputText');
 let inputHeight = document.getElementById('inputHeight');
@@ -9,8 +9,7 @@ let inputBg = document.getElementById('inputBg');
 let inputFont = document.getElementById('inputFont');
 
 const btn = document.querySelector('button');
-
-
+let arr = [];
 
 const DomElement = function (selector, height, width, bg, fontSize) {
   this.selector = selector;
@@ -43,36 +42,25 @@ DomElement.prototype.creatElOnthePage = function () {
   }
 };
 
-// let el1 = new DomElement('.block', '250px', '250px', '#eee', '24px');
-const el1 = new DomElement(inputText, inputHeight, inputWidth, inputBg, inputFont);
+let el1 = new DomElement(inputText.value, inputHeight, inputWidth, inputBg, inputFont);
 
-let arr = [];
+const myFunc = () => {
 
-for (let input of inputs) {
-  arr.push(input);
-}
+  inputs = document.querySelectorAll('input');
 
-const myFunc = (e) => {
-  inputText = document.getElementById('inputText').value;
-  inputHeight = document.getElementById('inputHeight').value;
-  inputWidth = document.getElementById('inputWidth').value;
-  inputBg = document.getElementById('inputBg').value;
-  inputFont = document.getElementById('inputFont').value;
+  inputs.forEach((item, index) => {
+    console.log(item);
+    arr.push({
+      id: index,
+      value: item.value
+    });
 
-  el1[inputText.value] = arr[0].value;
-  el1[inputHeight.value] = arr[1].value;
-  el1[inputWidth.value] = arr[2].value;
-  el1[inputBg.value] = arr[3].value;
-  el1[inputFont.value] = arr[4].value;
-  console.log(el1);
-}
-// const [inputText, inputHeight, inputWidth, inputBg, inputFont] = arr;
+  });
+  el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
+  el1.creatElOnthePage();
+};
 
 
 btn.addEventListener('click', myFunc);
-
-
-
-
 
 el1.creatElOnthePage();

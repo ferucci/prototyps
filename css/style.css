@@ -18,6 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+
 }
 
 .input {
@@ -40,6 +41,7 @@ div {
   align-items: center;
   text-align: center;
   padding: 20px;
+  margin: 50px;
   color: rgb(54, 35, 35);
   font-size: 20px;
   font-weight: 600;
