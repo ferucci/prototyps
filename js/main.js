@@ -8,6 +8,8 @@ let inputWidth = document.getElementById('inputWidth');
 let inputBg = document.getElementById('inputBg');
 let inputFont = document.getElementById('inputFont');
 
+const btn = document.querySelector('button');
+
 
 
 const DomElement = function (selector, height, width, bg, fontSize) {
@@ -41,30 +43,36 @@ DomElement.prototype.creatElOnthePage = function () {
   }
 };
 
-const el1 = new DomElement('.block', '250px', '250px', '#eee', '24px');
-// const el1 = new DomElement(inputText, 'inputHeight', 'inputWidth', 'inputBg', 'inputFont');
+// let el1 = new DomElement('.block', '250px', '250px', '#eee', '24px');
+const el1 = new DomElement(inputText, inputHeight, inputWidth, inputBg, inputFont);
 
-// let obj = [];
+let arr = [];
 
-// inputs.forEach((item, index) => {
-//   item.addEventListener('blur', (e) => {
-//     const log = e.target.value;
-//     obj.push({
-//       id: index,
-//       name: log
-//     });
-//     inputText = obj[0];
-//     inputHeight = obj[1];
-//     inputWidth = obj[2];
-//     inputBg = obj[3];
-//     inputFont = obj[4];
-//     console.log(obj);
-//     console.log(inputText);
-//     console.log(inputText.name);
-//   });
-//   return
+for (let input of inputs) {
+  arr.push(input);
+}
 
-// });
+const myFunc = (e) => {
+  inputText = document.getElementById('inputText').value;
+  inputHeight = document.getElementById('inputHeight').value;
+  inputWidth = document.getElementById('inputWidth').value;
+  inputBg = document.getElementById('inputBg').value;
+  inputFont = document.getElementById('inputFont').value;
+
+  el1[inputText.value] = arr[0].value;
+  el1[inputHeight.value] = arr[1].value;
+  el1[inputWidth.value] = arr[2].value;
+  el1[inputBg.value] = arr[3].value;
+  el1[inputFont.value] = arr[4].value;
+  console.log(el1);
+}
+// const [inputText, inputHeight, inputWidth, inputBg, inputFont] = arr;
+
+
+btn.addEventListener('click', myFunc);
+
+
+
 
 
 el1.creatElOnthePage();
