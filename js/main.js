@@ -42,14 +42,13 @@ DomElement.prototype.creatElOnthePage = function () {
   }
 };
 
-let el1 = new DomElement(inputText.value, inputHeight, inputWidth, inputBg, inputFont);
+let el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
 
 const myFunc = () => {
 
   inputs = document.querySelectorAll('input');
 
   inputs.forEach((item, index) => {
-    console.log(item);
     arr.push({
       id: index,
       value: item.value
@@ -57,10 +56,14 @@ const myFunc = () => {
 
   });
   el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
+  // if (el1 == el1) {
+  //   el1.remove();
+
+  // }
   el1.creatElOnthePage();
 };
 
 
 btn.addEventListener('click', myFunc);
 
-el1.creatElOnthePage();
+// el1.creatElOnthePage();
