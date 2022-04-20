@@ -56,10 +56,6 @@ const myFunc = () => {
 
   });
   el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
-  // if (el1 == el1) {
-  //   el1.remove();
-
-  // }
   el1.creatElOnthePage();
 };
 
