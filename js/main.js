@@ -8,6 +8,9 @@ let inputWidth = document.getElementById('inputWidth');
 let inputBg = document.getElementById('inputBg');
 let inputFont = document.getElementById('inputFont');
 
+let newEl = document.createElement('div');
+let newEl2 = document.createElement('p');
+
 const btn = document.querySelector('button');
 let arr = [];
 
@@ -20,8 +23,6 @@ const DomElement = function (selector, height, width, bg, fontSize) {
 };
 
 DomElement.prototype.creatElOnthePage = function () {
-  let newEl = document.createElement('div');
-  let newEl2 = document.createElement('p');
   newEl.textContent = 'Привет, я новый div на стр.';
   newEl2.textContent = 'Привет, я новая пэшка на стр.';
   if (el1.selector[0] == '.') {
@@ -46,8 +47,9 @@ let el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, i
 
 const myFunc = () => {
 
+  newEl = document.createElement('div');
   inputs = document.querySelectorAll('input');
-
+  let el;
   inputs.forEach((item, index) => {
     arr.push({
       id: index,
@@ -55,8 +57,13 @@ const myFunc = () => {
     });
 
   });
+
   el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
+  el = el1;
   el1.creatElOnthePage();
+  inputs.forEach((item) => {
+    item.value = '';
+  });
 };
 
 
