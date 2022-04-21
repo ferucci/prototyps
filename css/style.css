@@ -54,6 +54,10 @@ div {
   background-color: rgb(135, 185, 168);
 }
 
+.main__div4ik {
+  display: block;
+}
+
 .btn-result {
   padding: 13px;
   border: 1px solid #7aab8d;

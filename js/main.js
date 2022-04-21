@@ -1,17 +1,12 @@
 'use strict';
 
+const div4ik = document.querySelector('.main__div4ik');
+const btn = document.querySelector('button');
+
 let inputs = document.querySelectorAll('input');
-
-let inputText = document.getElementById('inputText');
-let inputHeight = document.getElementById('inputHeight');
-let inputWidth = document.getElementById('inputWidth');
-let inputBg = document.getElementById('inputBg');
-let inputFont = document.getElementById('inputFont');
-
 let newEl = document.createElement('div');
 let newEl2 = document.createElement('p');
 
-const btn = document.querySelector('button');
 let arr = [];
 
 const DomElement = function (selector, height, width, bg, fontSize) {
@@ -23,34 +18,37 @@ const DomElement = function (selector, height, width, bg, fontSize) {
 };
 
 DomElement.prototype.creatElOnthePage = function () {
+
   newEl.textContent = 'Привет, я новый div на стр.';
   newEl2.textContent = 'Привет, я новая пэшка на стр.';
-  if (el1.selector[0] == '.') {
-    document.body.append(newEl);
-    newEl.classList = this.selector.slice(1);
-    newEl.style.height = this.height;
-    newEl.style.width = this.width;
-    newEl.style.background = this.bg;
-    newEl.style.fontSize = this.fontSize;
-  } else if (el1.selector[0] == '#') {
-    document.body.append(newEl2);
-    newEl2.id = this.selector.slice(1);
-    newEl2.style.height = this.height;
-    newEl2.style.width = this.width;
-    newEl2.style.background = this.bg;
-    newEl2.style.fontSize = this.fontSize;
 
+  if (el1.selector[0] == '.') {
+    div4ik.append(newEl);
+    newEl.classList = this.selector.slice(1);
+    newEl.style.cssText = `height: ${this.height};
+                           width: ${this.width};
+                           background: ${this.bg};
+                           fontSize: ${this.fontSize};`;
+
+  } else if (el1.selector[0] == '#') {
+    div4ik.append(newEl2);
+    newEl2.id = this.selector.slice(1);
+    newEl2.style.cssText = `height: ${this.height};
+                            width: ${this.width};
+                            background: ${this.bg};
+                            fontSize: ${this.fontSize};`;
   }
 };
 
-let el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
+let el1 = new DomElement();
 
 const myFunc = () => {
 
-  newEl = document.createElement('div');
   inputs = document.querySelectorAll('input');
-  let el;
+  div4ik.innerHTML = '';
+
   inputs.forEach((item, index) => {
+
     arr.push({
       id: index,
       value: item.value
@@ -58,15 +56,17 @@ const myFunc = () => {
 
   });
 
-  el1 = new DomElement(inputText.value, inputHeight.value, inputWidth.value, inputBg.value, inputFont.value);
-  el = el1;
+  el1 = new DomElement(arr[0].value, arr[1].value, arr[2].value, arr[3].value, arr[4].value);
+
   el1.creatElOnthePage();
+  console.log(el1);
   inputs.forEach((item) => {
     item.value = '';
   });
+  arr = [];
 };
 
 
 btn.addEventListener('click', myFunc);
 
-// el1.creatElOnthePage();
+
