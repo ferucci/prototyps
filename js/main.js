@@ -4,9 +4,6 @@ const div4ik = document.querySelector('.main__div4ik');
 const btn = document.querySelector('button');
 
 let inputs = document.querySelectorAll('input');
-let newEl = document.createElement('div');
-let newEl2 = document.createElement('p');
-
 let arr = [];
 
 const DomElement = function (selector, height, width, bg, fontSize) {
@@ -17,7 +14,9 @@ const DomElement = function (selector, height, width, bg, fontSize) {
   this.fontSize = fontSize;
 };
 
-DomElement.prototype.creatElOnthePage = function () {
+DomElement.prototype.createElement = function () {
+  let newEl = document.createElement('div');
+  let newEl2 = document.createElement('p');
 
   newEl.textContent = 'Привет, я новый div на стр.';
   newEl2.textContent = 'Привет, я новая пэшка на стр.';
@@ -25,24 +24,25 @@ DomElement.prototype.creatElOnthePage = function () {
   if (el1.selector[0] == '.') {
     div4ik.append(newEl);
     newEl.classList = this.selector.slice(1);
-    newEl.style.cssText = `height: ${this.height};
-                           width: ${this.width};
+    newEl.style.cssText = `height: ${this.height + 'px'};
+                           width: ${this.width + 'px'};
+                           font-size: ${this.fontSize + 'px'};
                            background: ${this.bg};
-                           fontSize: ${this.fontSize};`;
+                           `;
 
   } else if (el1.selector[0] == '#') {
     div4ik.append(newEl2);
     newEl2.id = this.selector.slice(1);
-    newEl2.style.cssText = `height: ${this.height};
-                            width: ${this.width};
+    newEl2.style.cssText = `height: ${this.height + 'px'};
+                            width: ${this.width + 'px'};
                             background: ${this.bg};
-                            fontSize: ${this.fontSize};`;
+                            font-size: ${this.fontSize + 'px'};`;
   }
 };
 
 let el1 = new DomElement();
 
-const myFunc = () => {
+const gettingInputsValues = () => {
 
   inputs = document.querySelectorAll('input');
   div4ik.innerHTML = '';
@@ -58,8 +58,8 @@ const myFunc = () => {
 
   el1 = new DomElement(arr[0].value, arr[1].value, arr[2].value, arr[3].value, arr[4].value);
 
-  el1.creatElOnthePage();
-  console.log(el1);
+  el1.createElement();
+
   inputs.forEach((item) => {
     item.value = '';
   });
@@ -67,6 +67,6 @@ const myFunc = () => {
 };
 
 
-btn.addEventListener('click', myFunc);
+btn.addEventListener('click', gettingInputsValues);
 
 
