@@ -86,11 +86,7 @@ window.onload = function () {
   };
 
   const elManagement = (e, key) => {
-    console.log(key)
-
     let elem = document.querySelector('.manage');
-
-    elem.tabIndex = 0;
 
     if (e.code != "ArrowRight" && e.code != "ArrowLeft" &&
       e.code != "ArrowUp" && e.code != "ArrowDown") return;
@@ -106,7 +102,6 @@ window.onload = function () {
 
     elem.style.left = x + 'px';
     elem.style.top = y + 'px';
-
 
   }
 
